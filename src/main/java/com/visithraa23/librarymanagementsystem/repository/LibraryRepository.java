@@ -4,10 +4,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.visithraa23.librarymanagementsystem.dto.Book;
+import com.visithraa23.librarymanagementsystem.dto.IssueBook;
 import com.visithraa23.librarymanagementsystem.dto.Member;
+import com.visithraa23.librarymanagementsystem.dto.ReturnBook;
 import com.visithraa23.librarymanagementsystem.login.LoginView;
+import com.visithraa23.librarymanagementsystem.returnBook.ReturnBookView;
 
 public class LibraryRepository {
 
@@ -43,13 +47,12 @@ public class LibraryRepository {
 	}
 
 	public void deleteBook(int bookId) {
-		Book book=entityManager.find(Book.class, bookId);
-		if(book!=null) {
+		Book book = entityManager.find(Book.class, bookId);
+		if (book != null) {
 			entityTransaction.begin();
 			entityManager.remove(book);
 			entityTransaction.commit();
-		}
-		else {
+		} else {
 			System.out.println("ID not found");
 		}
 	}
@@ -77,6 +80,8 @@ public class LibraryRepository {
 			entityTransaction.begin();
 			entityManager.remove(member);
 			entityTransaction.commit();
+		} else {
+			System.out.println("Id not found");
 		}
 
 	}
@@ -103,6 +108,56 @@ public class LibraryRepository {
 		} else {
 			System.out.println("Id Not Found");
 		}
+	}
+
+	public boolean checkMemberPresent(int memberId, String memberName) {
+		Member checkId = entityManager.find(Member.class, memberId);
+		// Member checkName=entityManager.find(Member.class, memberName);
+		if (checkId == null) {
+			System.out.println("Id not Found...");
+		}
+
+		if (checkId.getName().equals(memberName))
+			return true;
+
+		return false;
+	}
+
+	public boolean checkBookPresent(int bookId, String bookName) {
+		Book checkId = entityManager.find(Book.class, bookId);
+		if (checkId == null) {
+			System.out.println("Id not Found...");
+			return false;
+		}
+		if (checkId.getBookName().equals(bookName))
+			return true;
+		return false;
+	}
+
+	public void issueBook(int memberId, String memberName, int bookId, String bookName, String issueDate) {
+		IssueBook issue = new IssueBook();
+		issue.setBookId(bookId);
+		issue.setBookName(bookName);
+		issue.setMemberId(memberId);
+		issue.setMemberName(memberName);
+		issue.setIssueDate(issueDate);
+
+		entityTransaction.begin();
+		entityManager.persist(issue);
+		entityTransaction.commit();
+	}
+
+	public void returnBook(int memberId, String memberName, int bookId, String bookName, String returnDate) {
+		ReturnBook returnBook = new ReturnBook();
+		returnBook.setBookId(bookId);
+		returnBook.setBookName(bookName);
+		returnBook.setMemberId(memberId);
+		returnBook.setMemberName(memberName);
+		returnBook.setReturnDate(bookId);
+
+		entityTransaction.begin();
+		entityManager.persist(returnBook);
+		entityTransaction.commit();
 	}
 
 }

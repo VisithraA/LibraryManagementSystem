@@ -13,10 +13,10 @@ public class ReturnBook {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int returnDate;
-	@OneToOne
-	private Book book;
-	@OneToOne
-	private Member member;
+	private int bookId;
+	private String bookName;
+	private int memberId;
+	private String memberName;
 
 	public int getId() {
 		return id;
@@ -34,20 +34,36 @@ public class ReturnBook {
 		this.returnDate = returnDate;
 	}
 
-	public Book getBook() {
-		return book;
+	public int getBookId() {
+		return bookId;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
-	
-	public Member getMember() {
-		return member;
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 }

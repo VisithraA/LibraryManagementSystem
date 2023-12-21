@@ -21,14 +21,14 @@ public class UpdateMemberView {
 		switch (update) {
 		case 1: {
 			System.out.println("Enter the New Id");
-			int newMemberId=sc.nextInt();
-			updateMemberViewModel.updateId(memberId,newMemberId);
+			int newMemberId = sc.nextInt();
+			updateMemberViewModel.updateId(memberId, newMemberId);
 			break;
 		}
 		case 2: {
 			System.out.println("Enter the New Name");
-			String newName=sc.nextLine();
-			updateMemberViewModel.updateName(memberId,newName);
+			String newName = sc.nextLine();
+			updateMemberViewModel.updateName(memberId, newName);
 			break;
 		}
 		case 3: {
@@ -53,5 +53,4 @@ public class UpdateMemberView {
 		}
 	}
 
-	
 }

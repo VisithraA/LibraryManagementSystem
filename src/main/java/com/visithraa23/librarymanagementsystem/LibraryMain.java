@@ -10,23 +10,23 @@ import com.visithraa23.librarymanagementsystem.login.LoginView;
 import com.visithraa23.librarymanagementsystem.membermanage.addmember.AddMemberView;
 import com.visithraa23.librarymanagementsystem.membermanage.deletemember.DeleteMemberView;
 import com.visithraa23.librarymanagementsystem.membermanage.updatemember.UpdateMemberView;
+import com.visithraa23.librarymanagementsystem.returnBook.ReturnBookView;
 
 public class LibraryMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		LoginView loginView = new LoginView();
-		
-		
+
 		Boolean condition = true;
 		Boolean adminLogin = loginView.login();
 		if (adminLogin) {
 			do {
 				System.out.println(
-						"\nCategories: \n1.Manage Member \n2.Manage Book \n3.Issue Book \n4.Return Book n5.check Availability \n0.exit ");
+						"\nCategories: \n1.Manage Member \n2.Manage Book \n3.Issue Book \n4.Return Book \n5.check Availability \n0.exit ");
 				int category = sc.nextInt();
-				
+
 				switch (category) {
-				
+
 				case 1: {
 					Boolean condition2 = true;
 					do {
@@ -105,16 +105,21 @@ public class LibraryMain {
 					break;
 				}
 
-				case 3:{
-					IssueBookView issueBookView=new IssueBookView();
+				case 3: {
+					IssueBookView issueBookView = new IssueBookView();
 					issueBookView.issueBook();
 					break;
 				}
-				case 4:{
+				case 4: {
+					ReturnBookView bookView = new ReturnBookView();
+					bookView.returnBook();
+					break;
+				}
+				case 5: {
 					break;
 				}
 				case 0: {
-					condition=false;
+					condition = false;
 					break;
 				}
 

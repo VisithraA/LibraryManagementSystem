@@ -9,11 +9,11 @@ public class AddBookViewModel {
 
 	public AddBookViewModel(AddBookView view) {
 		addBookView = view;
-		libraryRepository=LibraryRepository.getInstance();
+		libraryRepository = LibraryRepository.getInstance();
 	}
 
 	public void addBook(int bookId, String bookName, String author, String publisher, byte edition, byte quantity) {
-		libraryRepository.addBook(bookId,bookName,author,publisher,edition,quantity);
+		libraryRepository.addBook(bookId, bookName, author, publisher, edition, quantity);
 	}
 
 }

@@ -1,15 +1,16 @@
-package com.visithraa23.librarymanagementsystem.issueBook;
+package com.visithraa23.librarymanagementsystem.returnBook;
 
 import java.util.Scanner;
 
-public class IssueBookView {
-	private IssueBookViewModel issueBookViewModel;
+public class ReturnBookView {
 
-	public IssueBookView() {
-		issueBookViewModel = new IssueBookViewModel(this);
+	private ReturnBookViewModel bookviewModel;
+
+	public ReturnBookView() {
+		bookviewModel = new ReturnBookViewModel(this);
 	}
 
-	public void issueBook() {
+	public void returnBook() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the Member Id");
 		int memberId = sc.nextInt();
@@ -22,7 +23,8 @@ public class IssueBookView {
 		System.out.println("Enter the book name");
 		String bookName = sc.nextLine();
 		System.out.println("Enter the Date");
-		String issueDate = sc.next();
-		issueBookViewModel.issueBook(memberId, memberName, bookId, bookName, issueDate);
+		String returnDate = sc.next();
+		bookviewModel.returnBook(memberId, memberName, bookId, bookName, returnDate);
 	}
+
 }

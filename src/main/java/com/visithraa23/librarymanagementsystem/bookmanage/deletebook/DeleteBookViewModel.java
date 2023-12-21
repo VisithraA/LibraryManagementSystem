@@ -6,10 +6,10 @@ public class DeleteBookViewModel {
 
 	private DeleteBookView deleteBookView;
 	private LibraryRepository libraryRepository;
-	
+
 	public DeleteBookViewModel(DeleteBookView view) {
 		deleteBookView = view;
-		libraryRepository=LibraryRepository.getInstance();
+		libraryRepository = LibraryRepository.getInstance();
 	}
 
 	public void deleteBook(int bookId) {

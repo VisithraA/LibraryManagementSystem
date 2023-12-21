@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class DeleteBookView {
 
 	private DeleteBookViewModel deleteBookViewModel;
-	
+
 	public DeleteBookView() {
-		deleteBookViewModel=new DeleteBookViewModel(this);
+		deleteBookViewModel = new DeleteBookViewModel(this);
 	}
-	
+
 	public void deleteBook() {
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the BookID");
-		int bookId=sc.nextInt();
+		int bookId = sc.nextInt();
 		deleteBookViewModel.deleteBook(bookId);
 	}
 

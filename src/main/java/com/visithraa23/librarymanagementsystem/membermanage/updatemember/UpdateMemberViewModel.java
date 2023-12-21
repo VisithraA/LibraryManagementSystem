@@ -9,15 +9,15 @@ public class UpdateMemberViewModel {
 
 	public UpdateMemberViewModel(UpdateMemberView view) {
 		updateMemberView = view;
-		libraryRepository=LibraryRepository.getInstance();
+		libraryRepository = LibraryRepository.getInstance();
 	}
 
 	public void updateId(int memberId, int newMemberId) {
-		libraryRepository.updateId(memberId,newMemberId);
+		libraryRepository.updateId(memberId, newMemberId);
 	}
 
 	public void updateName(int memberId, String newName) {
-		libraryRepository.updateName(memberId,newName);
+		libraryRepository.updateName(memberId, newName);
 	}
 
 }

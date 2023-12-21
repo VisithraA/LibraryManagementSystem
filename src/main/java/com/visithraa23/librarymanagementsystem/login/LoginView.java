@@ -22,7 +22,7 @@ public class LoginView {
 		System.out.println("Password:");
 		String password = sc.next();
 		Boolean adminLogin = loginViewModel.checkAdmin(userName, password);
-		
+
 		return adminLogin;
 	}
 
