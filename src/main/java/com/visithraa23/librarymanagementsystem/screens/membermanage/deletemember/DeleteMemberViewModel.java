@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.membermanage.deletemember;
+package com.visithraa23.librarymanagementsystem.screens.membermanage.deletemember;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

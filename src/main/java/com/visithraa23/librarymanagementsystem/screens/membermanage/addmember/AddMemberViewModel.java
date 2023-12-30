@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.membermanage.addmember;
+package com.visithraa23.librarymanagementsystem.screens.membermanage.addmember;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.membermanage.updatemember;
+package com.visithraa23.librarymanagementsystem.screens.membermanage.updatemember;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.issueBook;
+package com.visithraa23.librarymanagementsystem.screens.issueBook;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

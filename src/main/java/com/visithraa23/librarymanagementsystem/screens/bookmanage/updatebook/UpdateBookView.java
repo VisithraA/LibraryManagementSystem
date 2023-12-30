@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.bookmanage.updatebook;
+package com.visithraa23.librarymanagementsystem.screens.bookmanage.updatebook;
 
 public class UpdateBookView {
 

@@ -2,15 +2,15 @@ package com.visithraa23.librarymanagementsystem;
 
 import java.util.Scanner;
 
-import com.visithraa23.librarymanagementsystem.bookmanage.addbook.AddBookView;
-import com.visithraa23.librarymanagementsystem.bookmanage.deletebook.DeleteBookView;
-import com.visithraa23.librarymanagementsystem.bookmanage.updatebook.UpdateBookView;
-import com.visithraa23.librarymanagementsystem.issueBook.IssueBookView;
 import com.visithraa23.librarymanagementsystem.login.LoginView;
-import com.visithraa23.librarymanagementsystem.membermanage.addmember.AddMemberView;
-import com.visithraa23.librarymanagementsystem.membermanage.deletemember.DeleteMemberView;
-import com.visithraa23.librarymanagementsystem.membermanage.updatemember.UpdateMemberView;
-import com.visithraa23.librarymanagementsystem.returnBook.ReturnBookView;
+import com.visithraa23.librarymanagementsystem.screens.bookmanage.addbook.AddBookView;
+import com.visithraa23.librarymanagementsystem.screens.bookmanage.deletebook.DeleteBookView;
+import com.visithraa23.librarymanagementsystem.screens.bookmanage.updatebook.UpdateBookView;
+import com.visithraa23.librarymanagementsystem.screens.issueBook.IssueBookView;
+import com.visithraa23.librarymanagementsystem.screens.membermanage.addmember.AddMemberView;
+import com.visithraa23.librarymanagementsystem.screens.membermanage.deletemember.DeleteMemberView;
+import com.visithraa23.librarymanagementsystem.screens.membermanage.updatemember.UpdateMemberView;
+import com.visithraa23.librarymanagementsystem.screens.returnBook.ReturnBookView;
 
 public class LibraryMain {
 	public static void main(String[] args) {
@@ -128,5 +128,22 @@ public class LibraryMain {
 				}
 			} while (condition);
 		}
+		
+		
+//		Boolean condition=true;
+//		do {
+//			System.out.println("1.Admin \n2.User \n3.Exit");
+//			int input=sc.nextInt();
+//			switch(input) {
+//			case 1:{
+//				LoginView loginView=new LoginView();
+//				loginView.login();
+//			}
+//			case 2:{}
+//			case 3:{}
+//			default:
+//				System.out.println("Enter a Valid Input");
+//			}
+//		} while (condition);
 	}
 }

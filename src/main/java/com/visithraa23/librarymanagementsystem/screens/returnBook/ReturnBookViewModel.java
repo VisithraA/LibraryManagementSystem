@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.returnBook;
+package com.visithraa23.librarymanagementsystem.screens.returnBook;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

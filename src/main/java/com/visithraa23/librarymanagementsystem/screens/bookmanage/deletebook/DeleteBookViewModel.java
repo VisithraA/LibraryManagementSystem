@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.bookmanage.deletebook;
+package com.visithraa23.librarymanagementsystem.screens.bookmanage.deletebook;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 

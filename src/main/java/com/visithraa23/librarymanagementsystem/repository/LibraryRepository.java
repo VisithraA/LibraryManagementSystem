@@ -11,7 +11,7 @@ import com.visithraa23.librarymanagementsystem.dto.IssueBook;
 import com.visithraa23.librarymanagementsystem.dto.Member;
 import com.visithraa23.librarymanagementsystem.dto.ReturnBook;
 import com.visithraa23.librarymanagementsystem.login.LoginView;
-import com.visithraa23.librarymanagementsystem.returnBook.ReturnBookView;
+import com.visithraa23.librarymanagementsystem.screens.returnBook.ReturnBookView;
 
 public class LibraryRepository {
 
@@ -117,9 +117,12 @@ public class LibraryRepository {
 			System.out.println("Id not Found...");
 		}
 
-		if (checkId.getName().equals(memberName))
-			return true;
+		else {
+			if((checkId.getName().equals(memberName)))
+				return true;
 
+		}
+			
 		return false;
 	}
 

@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.membermanage.addmember;
+package com.visithraa23.librarymanagementsystem.screens.membermanage.addmember;
 
 import java.util.Scanner;
 
@@ -18,7 +18,7 @@ public class AddMemberView {
 		String memberName = sc.nextLine();
 		sc.next();
 		System.out.println("Enter the PhoneNumber:");
-		long memberPhone = sc.nextInt();
+		long memberPhone = sc.nextLong();
 		System.out.println("Enter the Email:");
 		String memberEmail = sc.next();
 		System.out.println("Enter the Date Of Birth:");

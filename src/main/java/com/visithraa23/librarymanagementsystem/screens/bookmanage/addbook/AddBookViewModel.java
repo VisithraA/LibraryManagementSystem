@@ -1,4 +1,4 @@
-package com.visithraa23.librarymanagementsystem.bookmanage.addbook;
+package com.visithraa23.librarymanagementsystem.screens.bookmanage.addbook;
 
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 
