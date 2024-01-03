@@ -1,30 +1,21 @@
 package com.visithraa23.librarymanagementsystem.dto;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Member {
+public class User{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String memberId;
 	private String firstName;
 	private String lastName;
-	private String dob;
 	private String phoneNumber;
 	private String email;
-	private LocalDate joinDate;
-	@OneToMany
-	private List<Book> books;
+	private String password;
 
 	public int getId() {
 		return id;
@@ -32,14 +23,6 @@ public class Member {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
 	}
 
 	public String getFirstName() {
@@ -58,14 +41,6 @@ public class Member {
 		this.lastName = lastName;
 	}
 
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String memberDOB) {
-		this.dob = memberDOB;
-	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -82,22 +57,12 @@ public class Member {
 		this.email = email;
 	}
 
-	public LocalDate getJoinDate() {
-		return joinDate;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setJoinDate(LocalDate joinDate) {
-		this.joinDate = joinDate;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
-	
-	
 
 }
