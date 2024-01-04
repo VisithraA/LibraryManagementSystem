@@ -3,9 +3,11 @@ package com.visithraa23.librarymanagementsystem.userlogin;
 import java.util.Scanner;
 
 import com.visithraa23.librarymanagementsystem.screens.admin.searchbook.SearchBookView;
+import com.visithraa23.librarymanagementsystem.screens.member.issueBook.IssueBookView;
 import com.visithraa23.librarymanagementsystem.screens.member.membermanage.addmember.AddMemberView;
 import com.visithraa23.librarymanagementsystem.screens.member.membermanage.deletemember.DeleteMemberView;
 import com.visithraa23.librarymanagementsystem.screens.member.membermanage.updatemember.UpdateMemberView;
+import com.visithraa23.librarymanagementsystem.screens.member.returnBook.ReturnBookView;
 
 public class UserLoginView {
 	private UserLoginViewModel loginViewModel;
@@ -69,7 +71,13 @@ public class UserLoginView {
 					break;
 				}
 				case 3:{
-
+					IssueBookView issueBookView=new IssueBookView();
+					issueBookView.issueBook();
+					break;
+				}
+				case 4:{
+					ReturnBookView returnBookView=new ReturnBookView();
+					returnBookView.returnBook();
 					break;
 				}
 				case 0:{

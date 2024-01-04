@@ -12,21 +12,13 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int sno;
 	private int bookId;
 	private String bookName;
 	private String author;
 	private String publisher;
 	private byte edition;
 	private byte quantity;
-
-	public int getSno() {
-		return sno;
-	}
-
-	public void setSno(int sno) {
-		this.sno = sno;
-	}
+	private String availableStatus;
 
 	public int getBookId() {
 		return bookId;
@@ -75,5 +67,14 @@ public class Book {
 	public void setQuantity(byte quantity) {
 		this.quantity = quantity;
 	}
+
+	public String getAvailableStatus() {
+		return availableStatus;
+	}
+
+	public void setAvailableStatus(String availableStatus) {
+		this.availableStatus = availableStatus;
+	}
+	
 
 }

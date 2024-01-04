@@ -1,5 +1,6 @@
 package com.visithraa23.librarymanagementsystem.dto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,64 +9,66 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-//@Entity
+@Entity
 public class IssueBook {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int issueid;
-	private String issueDate;
-	private int memberId;
-	private String memberName;
-	private int bookId;
-	private String bookName;
+	private LocalDate issueDate;
+	private String issueStatus;
+	private LocalDate returnDate;
+	@OneToOne
+	private Member member;
+	@OneToOne
+	private Book book;
 
-	public int getId() {
+	public int getIssueid() {
 		return issueid;
 	}
 
-	public void setId(int id) {
-		this.issueid = id;
+	public void setIssueid(int issueid) {
+		this.issueid = issueid;
 	}
 
-	public String getIssueDate() {
+	public LocalDate getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(String issueDate) {
+	public void setIssueDate(LocalDate issueDate) {
 		this.issueDate = issueDate;
 	}
 
-	public int getMemberId() {
-		return memberId;
+	public LocalDate getReturnDate() {
+		return returnDate;
 	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void setReturnDate(LocalDate returnDate) {
+		this.returnDate = returnDate;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	public int getBookId() {
-		return bookId;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setBookId(int bookId) {
-		this.bookId = bookId;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
-	public String getBookName() {
-		return bookName;
+	public String getIssueStatus() {
+		return issueStatus;
 	}
 
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
+	public void setIssueStatus(String issueStatus) {
+		this.issueStatus = issueStatus;
 	}
 
 }

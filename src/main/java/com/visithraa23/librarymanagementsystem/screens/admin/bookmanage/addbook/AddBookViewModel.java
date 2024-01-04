@@ -12,8 +12,8 @@ public class AddBookViewModel {
 		libraryRepository = LibraryRepository.getInstance();
 	}
 
-	public void addBook(int bookId, String bookName, String author, String publisher, byte edition, byte quantity) {
-		libraryRepository.addBook(bookId, bookName, author, publisher, edition, quantity);
+	public void addBook(String bookName, String author, String publisher, byte edition, byte quantity) {
+		libraryRepository.addBook(bookName, author, publisher, edition, quantity);
 	}
 
 }

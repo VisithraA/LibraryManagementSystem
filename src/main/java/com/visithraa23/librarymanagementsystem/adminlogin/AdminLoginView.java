@@ -55,9 +55,7 @@ public class AdminLoginView {
 							break;
 						}
 						case 0: {
-							condition1 = false;
-							condition = false;
-							break;
+							System.exit(0);
 						}
 						default:
 							System.out.println("Enter the Valid Input..");
@@ -71,9 +69,12 @@ public class AdminLoginView {
 					SearchBookView searchBookView = new SearchBookView();
 					break;
 				}
-				case 0: {
+				case 9: {
 					condition = false;
 					break;
+				}
+				case 0:{
+					System.exit(0);
 				}
 				default:
 					System.out.println("Enter the valid input");

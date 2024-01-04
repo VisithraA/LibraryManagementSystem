@@ -18,7 +18,7 @@ public class MainView {
 		Boolean condition1 = true, condition2 = true;
 
 		do {
-			System.out.println("1.Admin \n2.User \n0.Exit");
+			System.out.println("\n1.Admin \n2.User \n0.Exit");
 			int user = sc.nextInt();
 			switch (user) {
 			case 1: {
@@ -28,7 +28,7 @@ public class MainView {
 			}
 			case 2: {
 				do {
-					System.out.println("1.Signup \n2.Login \n9.Back \n0.Exit");
+					System.out.println("\n1.Signup \n2.Login \n9.Back \n0.Exit");
 					int input = sc.nextInt();
 					switch (input) {
 					case 1: {

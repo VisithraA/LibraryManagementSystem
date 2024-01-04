@@ -1,5 +1,7 @@
 package com.visithraa23.librarymanagementsystem.screens.member.returnBook;
 
+import com.visithraa23.librarymanagementsystem.dto.Book;
+import com.visithraa23.librarymanagementsystem.dto.Member;
 import com.visithraa23.librarymanagementsystem.repository.LibraryRepository;
 
 public class ReturnBookViewModel {
@@ -12,10 +14,12 @@ public class ReturnBookViewModel {
 		libraryRepository = LibraryRepository.getInstance();
 	}
 
-	public void returnBook(int memberId, String memberName, int bookId, String bookName, String returnDate) {
-		if (libraryRepository.checkMemberPresent(memberId, memberName)) {
-			if (libraryRepository.checkBookPresent(bookId, bookName)) {
-				libraryRepository.returnBook(memberId, memberName, bookId, bookName, returnDate);
+	public void returnBook(String memberId, int bookId) {
+		Member member=libraryRepository.checkMemberPresent(memberId);
+		Book book=libraryRepository.checkBookPresent(bookId);
+		if (member!=null) {
+			if (book!=null) {
+				libraryRepository.returnBook(member, book);
 			} else
 				System.out.println("Book Not Found");
 		} else {

@@ -5,17 +5,13 @@ import java.time.LocalDate;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import com.visithraa23.librarymanagementsystem.dto.Book;
 import com.visithraa23.librarymanagementsystem.dto.IssueBook;
 import com.visithraa23.librarymanagementsystem.dto.Member;
-import com.visithraa23.librarymanagementsystem.dto.ReturnBook;
 import com.visithraa23.librarymanagementsystem.dto.User;
-import com.visithraa23.librarymanagementsystem.screens.member.returnBook.ReturnBookView;
-import com.visithraa23.librarymanagementsystem.userlogin.UserLoginView;
 
 public class LibraryRepository {
 
@@ -34,30 +30,6 @@ public class LibraryRepository {
 
 	public void updateBook() {
 		// TODO Auto-generated method stub
-
-	}
-
-	public void deleteBook(int bookId) {
-		Book book = entityManager.find(Book.class, bookId);
-		if (book != null) {
-			entityTransaction.begin();
-			entityManager.remove(book);
-			entityTransaction.commit();
-		} else {
-			System.out.println("ID not found");
-		}
-	}
-
-	public void deleteMember(int memberId) {
-		Query member = entityManager.createQuery("select mem.* from Member mem where mem.memberId= ?1").setParameter(1,
-				memberId);
-		if (member != null) {
-			entityTransaction.begin();
-			entityManager.remove(member);
-			entityTransaction.commit();
-		} else {
-			System.out.println("Id not found");
-		}
 
 	}
 
@@ -85,59 +57,6 @@ public class LibraryRepository {
 		}
 	}
 
-	public boolean checkMemberPresent(int memberId, String memberName) {
-		Member checkId = entityManager.find(Member.class, memberId);
-		// Member checkName=entityManager.find(Member.class, memberName);
-		if (checkId == null) {
-			System.out.println("Id not Found...");
-		}
-
-		else {
-			if ((checkId.getFirstName().equals(memberName)))
-				return true;
-
-		}
-
-		return false;
-	}
-
-	public boolean checkBookPresent(int bookId, String bookName) {
-		Book checkId = entityManager.find(Book.class, bookId);
-		if (checkId == null) {
-			System.out.println("Id not Found...");
-			return false;
-		}
-		if (checkId.getBookName().equals(bookName))
-			return true;
-		return false;
-	}
-
-	public void issueBook(int memberId, String memberName, int bookId, String bookName, String issueDate) {
-		IssueBook issue = new IssueBook();
-		issue.setBookId(bookId);
-		issue.setBookName(bookName);
-		issue.setMemberId(memberId);
-		issue.setMemberName(memberName);
-		issue.setIssueDate(issueDate);
-
-		entityTransaction.begin();
-		entityManager.persist(issue);
-		entityTransaction.commit();
-	}
-
-	public void returnBook(int memberId, String memberName, int bookId, String bookName, String returnDate) {
-		ReturnBook returnBook = new ReturnBook();
-		returnBook.setBookId(bookId);
-		returnBook.setBookName(bookName);
-		returnBook.setMemberId(memberId);
-		returnBook.setMemberName(memberName);
-		returnBook.setReturnDate(bookId);
-
-		entityTransaction.begin();
-		entityManager.persist(returnBook);
-		entityTransaction.commit();
-	}
-
 	// start from that newly
 	public void createAccount(String firstName, String lastName, String phone, String email, String password) {
 		User user = new User();
@@ -152,16 +71,18 @@ public class LibraryRepository {
 	}
 
 	public User findUser(String userName) {
-		TypedQuery<User> query = entityManager.createQuery("select u from User u where u.firstName=?1", User.class)
-				.setParameter(1, userName);
-		if (query != null)
+		try {
+			TypedQuery<User> query = entityManager.createQuery("select u from User u where u.firstName=?1", User.class)
+					.setParameter(1, userName);
 			return query.getSingleResult();
-		return null;
+		} catch (NoResultException e) {
+			return null;
+		}
+
 	}
 
-	public void addBook(int bookId, String bookName, String author, String publisher, byte edition, byte quantity) {
+	public void addBook(String bookName, String author, String publisher, byte edition, byte quantity) {
 		Book book = new Book();
-		book.setBookId(bookId);
 		book.setBookName(bookName);
 		book.setAuthor(author);
 		book.setPublisher(publisher);
@@ -184,6 +105,70 @@ public class LibraryRepository {
 		member.setJoinDate(LocalDate.now());
 		entityTransaction.begin();
 		entityManager.persist(member);
+		entityTransaction.commit();
+	}
+
+	public void deleteBook(int bookId) {
+		Book book = entityManager.find(Book.class, bookId);
+		if (book != null) {
+			entityTransaction.begin();
+			book.setAvailableStatus("Inactive");
+			entityManager.merge(book);
+			entityTransaction.commit();
+		} else {
+			System.out.println("Book not found");
+		}
+	}
+
+	public void deleteMember(int memberId) {
+		Member member = (Member) entityManager.createQuery("select mem.* from Member mem where mem.memberId= ?1")
+				.setParameter(1, memberId);
+		if (member != null) {
+			entityTransaction.begin();
+			member.setMemberStatus("Inactive");
+			entityManager.merge(member);
+			entityTransaction.commit();
+		} else {
+			System.out.println("Member not found");
+		}
+
+	}
+
+	public Member checkMemberPresent(String memberId) {
+		try {
+			TypedQuery<Member> member = entityManager
+					.createQuery("select mem from Member mem where mem.memberId=?1", Member.class)
+					.setParameter(1, memberId);
+			return member.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public Book checkBookPresent(int bookId) {
+		Book book = entityManager.find(Book.class, bookId);
+		if (book == null) {
+			return null;
+		}
+		return book;
+	}
+
+	public void issueBook(Member member, Book book) {
+		IssueBook issue = new IssueBook();
+		issue.setBook(book);
+		issue.setMember(member);
+		issue.setIssueStatus("Issued");
+		issue.setIssueDate(LocalDate.now());
+		entityTransaction.begin();
+		entityManager.persist(issue);
+		entityTransaction.commit();
+	}
+
+	public void returnBook(Member member, Book book) {
+		entityTransaction.begin();
+		entityManager.createQuery(
+				"update IssueBook issue set issue.issueStatus=?1,issue.returnDate=?2 where issue.member=?3 AND issue.book=?4 AND issue.issueStatus=?5")
+				.setParameter(1, "Returned").setParameter(2, LocalDate.now()).setParameter(3, member).setParameter(4, book).setParameter(5, "Issued").executeUpdate();
 		entityTransaction.commit();
 	}
 

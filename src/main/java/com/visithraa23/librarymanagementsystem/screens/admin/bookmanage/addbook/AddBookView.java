@@ -12,9 +12,6 @@ public class AddBookView {
 
 	public void addBook() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the Book Id");
-		int bookId = sc.nextInt();
-		sc.nextLine();
 		System.out.println("Enter the Book Name");
 		String bookName = sc.nextLine();
 		System.out.println("Enter the Author");
@@ -26,7 +23,7 @@ public class AddBookView {
 		System.out.println("Enter the Quantity");
 		byte quantity = sc.nextByte();
 
-		addBookViewModel.addBook(bookId, bookName, author, publisher, edition, quantity);
+		addBookViewModel.addBook( bookName, author, publisher, edition, quantity);
 	}
 
 }

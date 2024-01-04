@@ -23,6 +23,7 @@ public class Member {
 	private String phoneNumber;
 	private String email;
 	private LocalDate joinDate;
+	private String memberStatus;
 	@OneToMany
 	private List<Book> books;
 
@@ -90,6 +91,14 @@ public class Member {
 		this.joinDate = joinDate;
 	}
 
+	public String getMemberStatus() {
+		return memberStatus;
+	}
+
+	public void setMemberStatus(String memberStatus) {
+		this.memberStatus = memberStatus;
+	}
+
 	public List<Book> getBooks() {
 		return books;
 	}
@@ -97,7 +106,5 @@ public class Member {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	
-	
 
 }
